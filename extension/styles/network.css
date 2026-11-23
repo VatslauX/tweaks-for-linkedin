@@ -1,0 +1,3 @@
+/* POC: suggestions whose headline names one of the user's companies. company.js sets the markers. */
+html[data-lio-tab="network"] [data-lio-company-hide] { display: none !important; }
+html[data-lio-tab="network"] [data-lio-company-keep] { opacity: 0.35; }

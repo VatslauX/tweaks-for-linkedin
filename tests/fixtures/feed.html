@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- Synthetic copy of the LinkedIn home layout: same grid, nesting and hooks, no real page content. -->
+<html lang="en">
+<head><meta charset="utf-8"><title>Mock feed</title></head>
+<body style="margin:0">
+<main>
+  <div id="grid" style="display:grid;grid-template-columns:repeat(24,17px);column-gap:24px;width:960px">
+    <aside id="left" style="grid-column:1/7">Profile<div><div id="slot-premium"><div><div><div><a href="/premium/products/">Try Premium</a></div></div></div></div></div></aside>
+    <section id="center" style="grid-column:7/17">
+      <div id="feed-list" role="list" componentkey="container-update-list_mainFeed-lazy-column">
+        <div data-lazy-mount-id="1" style="display:contents"><div id="post-normal" role="listitem" componentkey="update-card-focus-1"><p>Author</p><p>100 followers</p><p>2h</p><p>I got promoted today</p></div></div>
+        <div id="wrap-promoted" data-lazy-mount-id="2" style="display:contents"><div id="post-promoted" role="listitem" componentkey="update-card-focus-2"><p>Brand</p><p>1,000 followers</p><p><span>Promoted</span></p></div></div>
+        <div data-lazy-mount-id="3" style="display:contents"><div id="post-german" role="listitem" componentkey="update-card-focus-3"><p>Marke</p><p>1.000 Follower</p><p>Gesponsert</p></div></div>
+        <div data-lazy-mount-id="4" style="display:contents"><div id="post-sponsor" role="listitem" componentkey="update-card-focus-4"><p>Person</p><p>Founder</p><p>Promoted by Example Brand</p></div></div>
+        <div data-lazy-mount-id="5" style="display:contents"><div id="post-body" role="listitem" componentkey="update-card-focus-5"><p>Author</p><p>Role</p><p>1d</p><p>One</p><p>Two</p><p>Three</p><p>Promoted</p></div></div>
+      </div>
+      <div id="post-outside" role="listitem" componentkey="update-card-focus-6"><p>Outside the feed</p><p>Promoted</p></div>
+    </section>
+    <aside id="rail" style="grid-column:17/-1">
+      <div>
+        <div>
+          <div id="slot-puzzles" style="position:relative">
+            <div id="feedRightNavGamesComponentRef" componentkey="feedRightNavGamesComponentRef"><p>Today's puzzles</p></div>
+          </div>
+          <div id="slot-follow" style="display:contents">
+            <div><p>Add to your feed</p><a href="/mynetwork/discover-hub/">View all recommendations</a></div>
+          </div>
+        </div>
+        <div style="position:sticky;top:24px">
+          <div>
+            <div id="slot-ad">
+              <div>
+                <iframe title="advertisement" componentkey="MainFeedDesktopNav_feed_ad" style="height:250px;width:300px;border:0"></iframe>
+                <form><footer>Ad label</footer></form>
+              </div>
+            </div>
+            <div id="slot-footer"><footer><a href="https://about.linkedin.com/">About</a></footer><p>Copyright line</p></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+<div id="interop-outlet"></div>
+<script>
+  document.getElementById('interop-outlet').attachShadow({ mode: 'open' }).innerHTML =
+    '<aside id="msg-overlay"><div id="slot-bar" class="msg-overlay-list-bubble">Messaging</div><div id="slot-chat">Open conversation</div></aside>';
+</script>
+</body>
+</html>

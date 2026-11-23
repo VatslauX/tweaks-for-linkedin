@@ -1,0 +1,34 @@
+/*
+  Home feed. These hooks exist only on the feed, so the rules need no data-lio-tab and nothing flashes while
+  LinkedIn swaps pages. A tweak applies unless <html data-lio-off> lists it.
+  Right column: aside > column > (top group > puzzles, follow) + (sticky > inner > ad, footer).
+*/
+
+html:not([data-lio-off~="follow"]) aside:has(#feedRightNavGamesComponentRef, [componentkey="MainFeedDesktopNav_feed_ad"]) > div > div > div:has(a[href*="/mynetwork/discover-hub"]) {
+  display: none !important;
+}
+
+/* promoted.js marks the card. Its wrapper goes too, so the feed keeps even spacing. */
+html:not([data-lio-off~="promoted"]) [data-lazy-mount-id]:has([data-lio-promoted]),
+html:not([data-lio-off~="promoted"]) [data-lio-promoted] {
+  display: none !important;
+}
+
+/* POC: degree.js marks posts filtered by connection degree, and dims the occasional one it keeps to limit loading. */
+[data-lazy-mount-id]:has([data-lio-degree-hide]),
+[data-lio-degree-hide] {
+  display: none !important;
+}
+
+[data-lio-degree-keep] {
+  opacity: 0.35;
+}
+
+html:not([data-lio-off~="widen"]) aside:has(#feedRightNavGamesComponentRef, [componentkey="MainFeedDesktopNav_feed_ad"]) {
+  display: none !important;
+}
+
+/* only the end changes, so the feed keeps the start column LinkedIn gives it at each screen width */
+html:not([data-lio-off~="widen"]) div:has(> aside #feedRightNavGamesComponentRef, > aside [componentkey="MainFeedDesktopNav_feed_ad"]) > section {
+  grid-column-end: -1 !important;
+}

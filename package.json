@@ -1,0 +1,31 @@
+{
+  "name": "tweaks-for-linkedin",
+  "version": "1.0.0",
+  "description": "Unofficial Chrome extension that hides clutter and filters what you see on LinkedIn.",
+  "license": "Apache-2.0",
+  "author": "Tweaks for LinkedIn contributors",
+  "homepage": "https://github.com/VatslauX/tweaks-for-linkedin#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VatslauX/tweaks-for-linkedin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VatslauX/tweaks-for-linkedin/issues"
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "npm run lint && npm run test:unit && npm run test:integration && npm run test:e2e",
+    "test:unit": "node --test tests/unit/*.test.js",
+    "test:integration": "node --test tests/integration/*.test.js",
+    "test:e2e": "playwright test",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.65.1",
+    "eslint": "^10.15.0",
+    "globals": "^17.14.0",
+    "jsdom": "^31.0.1"
+  },
+  "private": true
+}

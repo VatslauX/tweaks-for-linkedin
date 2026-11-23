@@ -1,0 +1,76 @@
+/*
+  Blocks that look the same on several LinkedIn tabs. A tweak applies unless <html data-lio-off> lists it.
+  Hooks are stable keys and link addresses. LinkedIn's class names are hashed: never use them.
+*/
+
+/* ad slots are keyed <Page>DesktopNav_<page>_..._ad; only-child keeps the rule off wrappers with other content */
+html:not([data-lio-off~="ad"]) aside div:has(> div:only-child > iframe[componentkey*="DesktopNav_"][componentkey$="_ad"]) {
+  display: none !important;
+}
+
+/*
+  The About link tells the site footer from a card's own <footer>; the ad block holds one too.
+  The second selector removes the one-child wrapper Network and Jobs put around it.
+*/
+html:not([data-lio-off~="footer"]) aside div:has(> footer a[href*="about.linkedin.com"]),
+html:not([data-lio-off~="footer"]) aside div:has(> div:only-child > footer a[href*="about.linkedin.com"]) {
+  display: none !important;
+}
+
+/* Messaging has an older layout: aside > (section > iframe) + footer, and its ad iframe has no componentkey */
+html:not([data-lio-off~="ad"]) #messaging aside > section:has(> iframe),
+html:not([data-lio-off~="footer"]) #messaging aside > footer:has(a[href*="about.linkedin.com"]) {
+  display: none !important;
+}
+
+/*
+  Puzzles: a block in Home's right column, a card in Network's main column.
+  The Network rule is tab-scoped and depth-fixed so a post that links to a game cannot hide its parent section.
+*/
+html:not([data-lio-off~="puzzles"]) aside:has(#feedRightNavGamesComponentRef, [componentkey="MainFeedDesktopNav_feed_ad"]) > div > div > div:has(#feedRightNavGamesComponentRef),
+html:not([data-lio-off~="puzzles"])[data-lio-tab="network"] section:has(> div:only-child > div > a[href*="/games/"]) {
+  display: none !important;
+}
+
+/* Premium: a card in Home's left column, a card between the job listings. Depth-fixed so wrappers stay. */
+html:not([data-lio-off~="premium"]) aside div:has(> div > div > div > a[href*="/premium/products"]),
+html:not([data-lio-off~="premium"])[data-lio-tab="jobs"] main div:has(> div > a[href*="/premium/products"]) {
+  display: none !important;
+}
+
+/*
+  Floating Messaging bar on the Messaging tab, where it is in the page. On other tabs it is in a shadow root
+  and content.js hides it. The class is readable, not hashed. Open conversations are siblings and stay.
+*/
+html:not([data-lio-off~="chatbar"]) #msg-overlay > [class~="msg-overlay-list-bubble"] {
+  display: none !important;
+}
+
+/*
+  Same width on all tabs. Home, Network, Jobs and Notifications share a 24-column grid, so each gets
+  a 6-column side column and an 18-column main column. Messaging has no side column and fills the grid.
+  Network and Jobs are limited to desktop widths, where that grid is known to apply.
+*/
+@media (min-width: 1000px) {
+  html:not([data-lio-off~="wide"]):is([data-lio-tab="network"], [data-lio-tab="jobs"]) main div:has(> aside):has(> section) > aside {
+    grid-column: 1 / 7 !important;
+  }
+
+  html:not([data-lio-off~="wide"]):is([data-lio-tab="network"], [data-lio-tab="jobs"]) main div:has(> aside):has(> section) > section {
+    grid-column: 7 / -1 !important;
+  }
+}
+
+html:not([data-lio-off~="wide"]) aside:has([componentkey="NotificationDesktopNav_notifications_ad"]),
+html:not([data-lio-off~="wide"]) #messaging div:has(> main + aside) > aside {
+  display: none !important;
+}
+
+html:not([data-lio-off~="wide"]) div:has(> aside [componentkey="NotificationDesktopNav_notifications_ad"]) > section {
+  grid-column-end: -1 !important;
+}
+
+html:not([data-lio-off~="wide"]) #messaging div:has(> main + aside) {
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-areas: "main" !important;
+}

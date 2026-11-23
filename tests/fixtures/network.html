@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- Synthetic copy of the LinkedIn Network layout: side column + main column, same nesting and hooks. -->
+<html lang="en">
+<head><meta charset="utf-8"><title>Mock network</title></head>
+<body style="margin:0">
+<main>
+  <div style="display:grid;grid-template-columns:repeat(24,17px);column-gap:24px;width:960px">
+    <aside id="side" style="grid-column:1/9">
+      <div>
+        <div style="position:sticky;top:24px">
+          <div>
+            <div id="slot-ad">
+              <div>
+                <iframe title="advertisement" componentkey="MynetworkDesktopNav_mynetwork_desktop_nav_ad" style="height:250px;width:300px;border:0"></iframe>
+                <form><footer>Ad label</footer></form>
+              </div>
+            </div>
+            <div id="footer-wrap"><div id="slot-footer"><footer><a href="https://about.linkedin.com/">About</a></footer><p>Copyright line</p></div></div>
+            <div id="card"><p>Manage my network</p><footer id="card-footer">Show all</footer></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <section id="center" style="grid-column:9/-1">
+      <p>Invitations</p>
+      <section id="puzzle-card"><div><div><a href="/games/zip/">Puzzle</a><a href="/games/zip/">Solve now</a></div></div></section>
+      <section id="other-card"><div><div><a href="/in/someone/">Person</a></div></div></section>
+      <div data-sdui-screen="com.linkedin.sdui.flagshipnav.mynetwork.Grow">
+        <div id="grow-list" role="list" style="display:grid;grid-template-columns:repeat(3,1fr)">
+          <div data-display-contents style="display:contents"><div id="person-current" role="listitem" componentkey="auto-component-1"><a href="/in/one/"><p>Person One</p><p>Engineer at Acme Corp</p></a><p>2 mutual connections</p></div></div>
+          <div data-display-contents style="display:contents"><div id="person-other" role="listitem" componentkey="auto-component-2"><a href="/in/two/"><p>Person Two</p><p>Engineer at Globex</p></a><p>2 mutual connections</p></div></div>
+          <div data-display-contents style="display:contents"><div id="person-past" role="listitem" componentkey="auto-component-3"><a href="/in/three/"><p>Person Three</p><p>Consultant, ex-Acme Corp</p></a><p>2 mutual connections</p></div></div>
+          <div data-display-contents style="display:contents"><div id="person-name" role="listitem" componentkey="auto-component-4"><a href="/in/four/"><p>Acme Corp</p><p>Designer at Initech</p></a><p>2 mutual connections</p></div></div>
+          <div data-display-contents style="display:contents"><div id="person-mutual" role="listitem" componentkey="auto-component-5"><a href="/in/five/"><p>Person Five</p><p>Analyst at Umbrella</p></a><p>Acme Corp and 2 others</p></div></div>
+          <div data-display-contents style="display:contents"><div id="person-similar" role="listitem" componentkey="auto-component-6"><a href="/in/six/"><p>Person Six</p><p>Founder at Acme Corporation</p></a><p>2 mutual connections</p></div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

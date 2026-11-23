@@ -1,0 +1,43 @@
+name: Bug report
+description: A tweak stopped working or changed the page in the wrong way.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Do not paste LinkedIn HTML, and do not attach screenshots showing real people, messages, or your profile.** Issues are public. Describe the problem in words, or crop and blur anything personal.
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: chrome
+    attributes:
+      label: Chrome version and window width
+      placeholder: Chrome 140, about 1440 px wide
+    validations:
+      required: true
+  - type: dropdown
+    id: tab
+    attributes:
+      label: LinkedIn tab
+      options: [Home, Network, Jobs, Messaging, Notifications, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened, and what did you expect?
+      description: Name the switch involved, and the language LinkedIn is set to if it isn't English.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: This report contains no LinkedIn HTML, real names, messages, or other personal data.
+          required: true

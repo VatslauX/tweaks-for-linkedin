@@ -1,0 +1,19 @@
+<!doctype html>
+<!-- Synthetic copy of the LinkedIn Messaging layout: conversations + side column with an ad and footer. -->
+<html lang="en">
+<head><meta charset="utf-8"><title>Mock messaging</title></head>
+<body style="margin:0">
+<div id="messaging">
+  <div>
+    <div style="display:grid;grid-template-columns:636px 300px;grid-template-areas:'main aside';column-gap:24px;width:960px">
+      <main id="main" style="grid-area:main">Conversations</main>
+      <aside id="side" style="grid-area:aside">
+        <section id="slot-ad"><iframe title="advertisement" style="height:250px;width:300px;border:0"></iframe></section>
+        <footer id="slot-footer"><div><ul><li><a href="https://about.linkedin.com/">About</a></li></ul></div></footer>
+      </aside>
+    </div>
+  </div>
+</div>
+<aside id="msg-overlay"><div id="slot-bar" class="msg-overlay-list-bubble">Messaging</div><div id="slot-chat">Open conversation</div></aside>
+</body>
+</html>

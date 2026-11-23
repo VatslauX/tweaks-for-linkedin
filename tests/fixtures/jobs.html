@@ -1,0 +1,27 @@
+<!doctype html>
+<!-- Synthetic copy of the LinkedIn Jobs layout: side column + main column, no ad slot. -->
+<html lang="en">
+<head><meta charset="utf-8"><title>Mock jobs</title></head>
+<body style="margin:0">
+<main>
+  <div style="display:grid;grid-template-columns:repeat(24,17px);column-gap:24px;width:960px">
+    <aside id="side" style="grid-column:1/9">
+      <div>
+        <div style="position:sticky;top:24px">
+          <div>
+            <div id="card"><p>Job preferences</p></div>
+            <div id="footer-wrap"><div id="slot-footer"><footer><a href="https://about.linkedin.com/">About</a></footer><p>Copyright line</p></div></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <section id="center" style="grid-column:9/-1">
+      <div id="job-list">
+        <div id="job-card"><a href="/jobs/view/1/">Job listing</a></div>
+        <div style="display:contents"><div id="slot-premium"><div><a href="/premium/products/">Activate Premium</a></div></div></div>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+</html>
