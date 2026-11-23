@@ -64,6 +64,13 @@
     setCompanyFilter(companyOn());
   };
 
+  // Blue toolbar icon on this tab. Runs again when the page returns from the back/forward cache.
+  const markActive = () => {
+    try { chrome.runtime.sendMessage({ type: LIO_ACTIVE_MESSAGE })?.catch(() => {}); } catch (e) {}
+  };
+  markActive();
+  window.addEventListener('pageshow', markActive);
+
   // The popup's counter. The reply is only a number, or null when this page isn't blocking promoted posts.
   chrome.runtime.onMessage.addListener((message, sender, reply) => {
     if (sender.id !== chrome.runtime.id || message?.type !== LIO_COUNT_MESSAGE) return;

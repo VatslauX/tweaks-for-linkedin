@@ -125,7 +125,7 @@ function createWorld({ storage = {} } = {}) {
       virtualConsole.on('jsdomError', e => errors.push(e));
       const dom = new JSDOM(html, { url: `https://www.linkedin.com${url}`, runScripts: 'outside-only', virtualConsole });
       const win = dom.window, doc = win.document;
-      const tab = { world, window: win, document: doc, storageListeners: [], messageListeners: [], navListeners: [], dead: false };
+      const tab = { world, window: win, document: doc, storageListeners: [], messageListeners: [], navListeners: [], sent: [], dead: false };
       tabs.add(tab);
 
       let extensionId = 'test-extension-id';
@@ -141,7 +141,12 @@ function createWorld({ storage = {} } = {}) {
         },
         runtime: {
           get id() { return extensionId; },
-          onMessage: { addListener: fn => tab.messageListeners.push(fn) }
+          onMessage: { addListener: fn => tab.messageListeners.push(fn) },
+          sendMessage: message => {
+            if (tab.dead) throw new Error('Extension context invalidated.');
+            tab.sent.push(json(message));
+            return Promise.resolve();
+          }
         }
       };
       Object.defineProperty(win, 'chrome', { value: chromeApi, configurable: true });

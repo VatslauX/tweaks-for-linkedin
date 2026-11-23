@@ -47,6 +47,8 @@ The **Feedback or report a problem** link only opens a form on GitHub in a new t
 
 The toolbar popup can ask the active tab for the number of blocked posts. The reply is only a number.
 
+A small background script turns the toolbar icon blue on LinkedIn tabs. It receives only a signal that the extension is running on that tab, and it reads no page content or saved settings.
+
 ## Changes
 
 If this policy changes, the new version will be published in this repository with a new "Last updated" date.

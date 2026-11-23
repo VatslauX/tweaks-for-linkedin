@@ -18,11 +18,14 @@
     "default_title": "Tweaks for LinkedIn (unofficial)",
     "default_popup": "options.html",
     "default_icon": {
-      "16": "icons/icon16.png",
-      "32": "icons/icon32.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
+      "16": "icons/grey16.png",
+      "32": "icons/grey32.png",
+      "48": "icons/grey48.png",
+      "128": "icons/grey128.png"
     }
+  },
+  "background": {
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {

@@ -12,9 +12,10 @@ const sources = fs.readdirSync(EXT).filter(f => /\.(js|html)$/.test(f))
 test('manifest: only the storage permission and only LinkedIn', () => {
   assert.strictEqual(manifest.manifest_version, 3);
   assert.deepStrictEqual(manifest.permissions, ['storage']);
-  for (const k of ['host_permissions', 'optional_permissions', 'optional_host_permissions', 'web_accessible_resources', 'externally_connectable', 'background']) {
+  for (const k of ['host_permissions', 'optional_permissions', 'optional_host_permissions', 'web_accessible_resources', 'externally_connectable']) {
     assert.strictEqual(manifest[k], undefined, k);
   }
+  assert.deepStrictEqual(manifest.background, { service_worker: 'background.js' });
   assert.strictEqual(manifest.content_scripts.length, 1);
   const cs = manifest.content_scripts[0];
   assert.deepStrictEqual(cs.matches, ['https://www.linkedin.com/*']);
@@ -25,17 +26,30 @@ test('manifest: only the storage permission and only LinkedIn', () => {
 test('manifest: every listed file exists', () => {
   const cs = manifest.content_scripts[0];
   const icons = [...Object.values(manifest.icons), ...Object.values(manifest.action.default_icon)];
-  for (const f of [...cs.js, ...cs.css, manifest.action.default_popup, ...icons]) assert.ok(fs.existsSync(path.join(EXT, f)), f);
+  for (const f of [...cs.js, ...cs.css, manifest.action.default_popup, manifest.background.service_worker, ...icons]) {
+    assert.ok(fs.existsSync(path.join(EXT, f)), f);
+  }
 });
 
-test('manifest: each icon is a PNG of its listed size', () => {
-  assert.deepStrictEqual(manifest.action.default_icon, manifest.icons);
-  assert.deepStrictEqual(Object.keys(manifest.icons), ['16', '32', '48', '128']);
-  for (const [size, f] of Object.entries(manifest.icons)) {
-    const png = fs.readFileSync(path.join(EXT, f));
-    assert.strictEqual(png.toString('latin1', 1, 4), 'PNG', f);
-    assert.deepStrictEqual([png.readUInt32BE(16), png.readUInt32BE(20)], [Number(size), Number(size)], f);
+test('manifest: each blue and grey icon is a PNG of its listed size', () => {
+  for (const [set, prefix] of [[manifest.icons, 'icon'], [manifest.action.default_icon, 'grey']]) {
+    assert.deepStrictEqual(Object.keys(set), ['16', '32', '48', '128']);
+    for (const [size, f] of Object.entries(set)) {
+      assert.strictEqual(f, `icons/${prefix}${size}.png`);
+      const png = fs.readFileSync(path.join(EXT, f));
+      assert.strictEqual(png.toString('latin1', 1, 4), 'PNG', f);
+      assert.deepStrictEqual([png.readUInt32BE(16), png.readUInt32BE(20)], [Number(size), Number(size)], f);
+    }
   }
+});
+
+test('background: uses only the messaging and toolbar APIs, and reads no page or stored data', () => {
+  const text = fs.readFileSync(path.join(EXT, 'background.js'), 'utf8');
+  const apis = new Set(text.match(/chrome\.\w+(?:\.\w+)?/g));
+  assert.deepStrictEqual([...apis].sort(), ['chrome.action.setIcon', 'chrome.action.setTitle', 'chrome.runtime.id', 'chrome.runtime.onMessage']);
+  assert.ok(!/document|textContent|sender\.url|sender\.tab\.url/.test(text));
+  const flags = fs.readFileSync(path.join(EXT, 'flags.js'), 'utf8');
+  assert.strictEqual(text.match(/ACTIVE_MESSAGE = '([^']+)'/)[1], flags.match(/LIO_ACTIVE_MESSAGE = '([^']+)'/)[1]);
 });
 
 test('release: the manifest, package, lockfile and changelog share one version', () => {

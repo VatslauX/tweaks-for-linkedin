@@ -45,7 +45,7 @@ A small Chrome extension for a calmer LinkedIn. Hide the clutter, give your feed
 
 ## Settings
 
-Click the **Tweaks for LinkedIn icon** in the Chrome toolbar. If you don't see it, pin it from the puzzle-piece menu.
+Click the **Tweaks for LinkedIn icon** in the Chrome toolbar. If you don't see it, pin it from the puzzle-piece menu. The icon is **blue on LinkedIn tabs**, where the extension is working, and **grey on other websites**.
 
 | Tab | Setting | Default |
 |---|---|---|

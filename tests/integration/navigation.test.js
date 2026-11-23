@@ -29,6 +29,20 @@ test('in-app navigation updates the tab, and a non-tab page clears it', async ()
   noErrors(w);
 });
 
+test('the page tells the extension it is active, with no page data', async () => {
+  const w = createWorld();
+  const tab = await w.open();
+  assert.ok(tab.sent.length >= 1);
+  const afterLoad = tab.sent.length; // a normal load also fires pageshow, and repeating the signal is harmless
+  tab.window.dispatchEvent(new tab.window.Event('pageshow'));
+  assert.equal(tab.sent.length, afterLoad + 1);
+  for (const message of tab.sent) assert.deepEqual(message, { type: 'lio-active-tab' });
+  tab.disableExtension();
+  tab.window.dispatchEvent(new tab.window.Event('pageshow'));
+  assert.equal(tab.sent.length, afterLoad + 1);
+  noErrors(w);
+});
+
 test('navigation keeps the stored settings', async () => {
   const w = createWorld({ storage: { puzzles: false } });
   const tab = await w.open();

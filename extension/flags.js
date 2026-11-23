@@ -34,6 +34,9 @@ const LIO_DEFAULTS = Object.fromEntries(LIO_TWEAKS.map(t => [t.key, t.on]));
 // The popup asks the active tab how many promoted posts are blocked with this message type.
 const LIO_COUNT_MESSAGE = 'lio-promoted-count';
 
+// The content script tells background.js it is running, so the toolbar icon turns blue on this tab.
+const LIO_ACTIVE_MESSAGE = 'lio-active-tab';
+
 // Company names for the Network filter. In chrome.storage.local, so they stay in this browser profile.
 const LIO_COMPANIES_KEY = 'lioCompanies';
 

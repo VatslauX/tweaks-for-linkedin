@@ -8,7 +8,8 @@ paths:
 
 Do not loosen these. `tests/unit/static.test.js` checks them.
 
-- The only permission is `storage`. Do not add `host_permissions`, optional permissions, `web_accessible_resources`, `externally_connectable`, or a background worker.
+- The only permission is `storage`. Do not add `host_permissions`, optional permissions, `web_accessible_resources`, or `externally_connectable`.
+- Approved exception: the one background worker is `background.js`. It may only set the toolbar icon and title of a tab, after a message from this extension's top-frame content script on `https://www.linkedin.com`. It must not read page content or storage, or make requests.
 - Content scripts match only `https://www.linkedin.com/*`, in the top frame and the isolated world. The top-frame script may add one `<style>` to LinkedIn's same-origin `/preload/` Messaging frame. It must not read that frame's content.
 - No `eval`, `new Function`, remote code, injected `<script>`, `fetch`, `XMLHttpRequest`, `sendBeacon`, `WebSocket`, or `postMessage`. The extension sends nothing anywhere.
 - No `console.log`, `console.info`, or `console.debug`. Never read, store, or log profile, feed, or message content.

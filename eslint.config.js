@@ -4,7 +4,7 @@ const globals = require('globals');
 
 // globals that flags.js and promoted.js define for the other scripts
 const flags = Object.fromEntries(['LIO_TABS', 'LIO_TWEAKS', 'LIO_DEFAULTS', 'lioSettings', 'lioListeners', 'lioOnSettings',
-  'lioSanitize', 'lioBlocked', 'lioOff', 'lioTabFor', 'lioAlive', 'LIO_COUNT_MESSAGE', 'lioWatchPromoted', 'lioPromotedCount', 'lioWatchDegree', 'LIO_DEGREE_SWITCHES', 'lioWatchCompany', 'LIO_COMPANIES_KEY', 'lioCleanCompanies'].map(k => [k, 'readonly']));
+  'lioSanitize', 'lioBlocked', 'lioOff', 'lioTabFor', 'lioAlive', 'LIO_COUNT_MESSAGE', 'LIO_ACTIVE_MESSAGE','lioWatchPromoted', 'lioPromotedCount', 'lioWatchDegree', 'LIO_DEGREE_SWITCHES', 'lioWatchCompany', 'LIO_COMPANIES_KEY', 'lioCleanCompanies'].map(k => [k, 'readonly']));
 
 module.exports = [
   { ignores: ['node_modules/', 'test-results/', 'playwright-report/', '.claude/', '.venv/', '.harness-profile/', '.idea/'] },
