@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Tweaks for LinkedIn (unofficial)",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "minimum_chrome_version": "111",
   "description": "Hide clutter, filter what you see, and widen the layout on LinkedIn. Not affiliated with LinkedIn.",
   "homepage_url": "https://github.com/VatslauX/tweaks-for-linkedin",

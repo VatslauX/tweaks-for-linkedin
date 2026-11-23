@@ -74,7 +74,7 @@ Changes apply right away to open LinkedIn tabs. Your switches sync with your Chr
 
 The extension isn't in the Chrome Web Store, so you install it by hand. It takes about a minute and needs Chrome 111 or newer.
 
-1. Download `tweaks-for-linkedin-1.0.0.zip` from the [latest release](https://github.com/VatslauX/tweaks-for-linkedin/releases/latest).
+1. Download the `tweaks-for-linkedin` ZIP from the [latest release](https://github.com/VatslauX/tweaks-for-linkedin/releases/latest).
 2. Unzip it into a folder you'll keep. Chrome loads the extension from there, so don't delete it.
 3. Open `chrome://extensions` and turn on **Developer mode** (top right).
 4. Click **Load unpacked** and choose the unzipped folder.

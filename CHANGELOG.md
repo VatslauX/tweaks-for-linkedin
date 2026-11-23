@@ -1,6 +1,6 @@
 # Release notes
 
-## Unreleased
+## 1.1.0 — 2026-11-23
 
 - **New icon**: a white L that is blue on LinkedIn tabs, where the extension is working, and grey on other websites.
 - **Feedback or report a problem** (new): a link at the bottom of the popup opens a GitHub form with the extension version, Chrome version, and language filled in. Nothing is sent unless you submit it.
