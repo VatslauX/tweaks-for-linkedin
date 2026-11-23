@@ -1,0 +1,58 @@
+name: Feedback or report a problem
+description: Tell us what went wrong, or share an idea.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Issues are public.** Do not paste LinkedIn HTML, and do not attach screenshots showing real people, messages, or your profile. Describe the problem in words, or crop and blur anything personal.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is this about?
+      options: [A problem, An idea or other feedback]
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Tell us more
+      description: For a problem, say what happened, what you expected, and which switch is involved.
+    validations:
+      required: true
+  - type: dropdown
+    id: tab
+    attributes:
+      label: LinkedIn tab
+      options: [Home, Network, Jobs, Messaging, Notifications, Not about one tab]
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: chrome
+    attributes:
+      label: Chrome version
+      placeholder: Chrome 140
+    validations:
+      required: true
+  - type: input
+    id: language
+    attributes:
+      label: Chrome language
+      description: If LinkedIn uses a different language, add it here.
+      placeholder: en-US
+  - type: input
+    id: width
+    attributes:
+      label: Window width, for layout problems
+      placeholder: About 1440 px
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: This report contains no LinkedIn HTML, real names, messages, or other personal data.
+          required: true

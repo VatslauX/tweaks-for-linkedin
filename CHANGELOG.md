@@ -1,5 +1,9 @@
 # Release notes
 
+## Unreleased
+
+- **Feedback or report a problem** (new): a link at the bottom of the popup opens a GitHub form with the extension version, Chrome version, and language filled in. Nothing is sent unless you submit it.
+
 ## 1.0.0 — 2026-11-23
 
 First public version.

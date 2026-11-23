@@ -38,6 +38,8 @@ The extension adds `data-lio-*` attributes to LinkedIn's page, and LinkedIn's sc
 - It does not read your messages.
 - It does not run on any other website.
 
+The **Feedback or report a problem** link only opens a form on GitHub in a new tab, with the extension version, Chrome version, and language filled in. Nothing is sent unless you submit that form yourself, and issues on GitHub are public.
+
 ## Permissions
 
 - **storage**: to save your settings and company names.

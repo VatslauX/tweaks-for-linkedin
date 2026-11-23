@@ -4,6 +4,13 @@
   const inputs = new Map();
   let counter = null;
 
+  // A GitHub form prefilled with the version, Chrome version, and language. The user sees it all before submitting.
+  const { version, homepage_url: home } = chrome.runtime.getManifest();
+  const chromeVersion = navigator.userAgent.match(/Chrome\/(\d+)/)?.[1];
+  document.getElementById('feedback').href = `${home}/issues/new?${new URLSearchParams({
+    template: 'feedback.yml', version, chrome: chromeVersion ? `Chrome ${chromeVersion}` : '', language: navigator.language
+  })}`;
+
   // Asks the active tab for its count. Any tab that isn't LinkedIn has no listener, so the badge stays hidden.
   async function refreshCounter() {
     if (!counter) return;

@@ -1,0 +1,53 @@
+name: Badges
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # A dependency can be flagged after it was merged, so the malware check also runs daily.
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+
+# Write access is limited to this workflow, which pushes only the badge SVGs to the orphan `badges` branch.
+permissions:
+  contents: write
+  vulnerability-alerts: read
+
+concurrency:
+  group: badges
+  cancel-in-progress: false
+
+jobs:
+  badges:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: node scripts/badges.js "$RUNNER_TEMP/badges"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to the badges branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin badges >/dev/null 2>&1; then
+            git fetch origin badges
+            git checkout -B badges origin/badges
+          else
+            git checkout --orphan badges
+            git rm -rfq --cached .
+            find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          fi
+          cp "$RUNNER_TEMP"/badges/coverage-badge.svg "$RUNNER_TEMP"/badges/malware-badge.svg .
+          git add coverage-badge.svg malware-badge.svg
+          if git diff --cached --quiet; then
+            echo "badges unchanged"
+            exit 0
+          fi
+          git commit -m "chore: update badges"
+          git push origin HEAD:badges

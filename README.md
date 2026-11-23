@@ -1,78 +1,116 @@
 # Tweaks for LinkedIn (unofficial)
 
-A small Chrome extension with tweaks for LinkedIn. It hides clutter, filters what you see, and gives each tab a wider, consistent layout.
+[![Test](https://github.com/VatslauX/tweaks-for-linkedin/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/VatslauX/tweaks-for-linkedin/actions/workflows/test.yml)
+[![Coverage](https://raw.githubusercontent.com/VatslauX/tweaks-for-linkedin/badges/coverage-badge.svg)](https://github.com/VatslauX/tweaks-for-linkedin/actions/workflows/badges.yml)
+[![Malware checks](https://raw.githubusercontent.com/VatslauX/tweaks-for-linkedin/badges/malware-badge.svg)](https://github.com/VatslauX/tweaks-for-linkedin/actions/workflows/badges.yml)
+[![Latest release](https://img.shields.io/github/v/release/VatslauX/tweaks-for-linkedin)](https://github.com/VatslauX/tweaks-for-linkedin/releases/latest)
+[![License](https://img.shields.io/github/license/VatslauX/tweaks-for-linkedin)](LICENSE)
+
+A small Chrome extension for a calmer LinkedIn. Hide the clutter, give your feed more room, and choose whose posts and suggestions you see.
 
 > **Unofficial.** Not affiliated with, endorsed by, or supported by LinkedIn. LinkedIn is a trademark of LinkedIn Corporation.
 
-## Read this before installing
-
-**Using this extension can put your LinkedIn account at risk.**
-
-- LinkedIn's [User Agreement](https://www.linkedin.com/legal/user-agreement) forbids overlaying or modifying the service or its appearance, and names removing or obscuring ads as an example. Its [help page on prohibited software](https://www.linkedin.com/help/linkedin/answer/a1341387) says browser extensions that change its appearance are not allowed.
-- LinkedIn can restrict or close accounts that break these rules. **This applies to every tweak here**, not only ad blocking.
-- **The extension is not hidden from LinkedIn.** It adds `data-lio-*` attributes to the page, and the layout changes are visible to LinkedIn's scripts. This project will not add stealth techniques or fake ad views.
-- You use it at your own risk. This is not legal advice.
+> **Use at your own risk.** LinkedIn's [User Agreement](https://www.linkedin.com/legal/user-agreement) and [rules on browser extensions](https://www.linkedin.com/help/linkedin/answer/a1341387) do not allow tools that change how the site looks or remove ads, and LinkedIn can restrict or close accounts that break them. This applies to every tweak here. If your LinkedIn account is important to you, weigh that before installing.
 
 ## Features
 
-Every tweak has a switch in the toolbar popup and applies right away.
+**Clean up every tab**
+- Hide the promoted banner in the side column.
+- Hide the footer links.
+- Hide *Today's puzzles*.
+- Hide Premium promos.
+- Hide the floating Messaging bar. A conversation you open from someone's profile still appears.
 
-**Everywhere**
+**More room for what you read**
+- **Widen the feed**: on Home, the feed takes over the empty right column.
+- **Same width on all tabs**: Network, Jobs, and Notifications line up with Home, and Messaging uses the full width.
 
-- Hide the promoted banner, footer links, Today's puzzles, Premium promos, and the floating Messaging bar.
-- Use the same content width on Network, Jobs, Messaging, and Notifications.
+**Choose whose posts you see**
+- Separate switches for posts from **1st**, **2nd**, and **3rd+ connections**, and from **everyone else** (companies, people you follow, and posts with no connection label).
+- For example, to see only your 1st connections, turn the other three off.
+- After 10 hidden posts in a row, one stays visible but dimmed, so LinkedIn doesn't keep loading more while you scroll.
 
-**Home**
+**Hide people from your own company**
+- On *My Network → Grow*, hide suggested people whose headline names your company.
+- Type your company in the extension's popup, one name per line, up to 10 names. Add variants if people write it differently.
+- Capital letters and accents don't matter, so `Skoda` also finds `Škoda`.
+- Past jobs stay visible, such as `ex-Acme` or `Former Engineer at Acme`.
+- Your company names are saved only in this browser.
 
-- **Block promoted** (off by default): hides promoted posts and shows how many were blocked on the page.
-- **Filter by connection**: show or hide posts from 1st, 2nd, and 3rd+ connections, and from everyone else.
-- Hide *Add to your feed* and widen the feed.
+**Block promoted posts** (optional, off by default)
+- Hides promoted posts in your Home feed as they load.
+- A counter in the popup shows how many were blocked on the page.
+- Recognizes the "Promoted" label in English and other EU languages.
+- It's off by default because removing ads carries the most risk for your account.
 
-**Network**
+## Settings
 
-- **Hide people at my company**: type one or more company names in the popup, and suggestions whose headline names one are hidden. The names stay in your browser.
+Click the **Tweaks for LinkedIn icon** in the Chrome toolbar. If you don't see it, pin it from the puzzle-piece menu.
 
-Filters keep one dimmed card after every 10 hidden in a row, so LinkedIn doesn't keep loading more content.
+| Tab | Setting | Default |
+|---|---|---|
+| Everywhere | Hide promoted banner | On |
+| Everywhere | Hide footer links | On |
+| Everywhere | Hide Today's puzzles | On |
+| Everywhere | Hide Premium promos | On |
+| Everywhere | Hide floating Messaging bar | On |
+| Everywhere | Same width on all tabs | On |
+| Home | Block promoted | **Off** |
+| Home | Show 1st connections | On |
+| Home | Show 2nd connections | On |
+| Home | Show 3rd+ connections | On |
+| Home | Show everyone else | On |
+| Home | Hide Add to your feed | On |
+| Home | Widen the feed | On |
+| Network | Hide people at my company (+ your list of names) | On, hides nothing until you add a name |
 
-## Install
+Changes apply right away to open LinkedIn tabs. Your switches sync with your Chrome profile.
 
-The extension is not in the Chrome Web Store. It needs Chrome 111 or newer.
+*Same width on all tabs* needs the banner and footer hidden. *Widen the feed* also needs puzzles and *Add to your feed* hidden. If one of those is showing, the width switch is grayed out.
 
-1. Download the ZIP from the [latest release](https://github.com/VatslauX/tweaks-for-linkedin/releases/latest) and unzip it.
-2. Open `chrome://extensions` and turn on **Developer mode**.
-3. Click **Load unpacked** and select the unzipped folder.
-4. Pin the extension and click its icon to change the tweaks.
+**Feedback or report a problem**, at the bottom of the popup, opens a form on GitHub with the extension version, Chrome version, and language filled in. You can see and edit everything, and nothing is sent unless you submit it.
 
-## Privacy
+## Installation
 
-The extension has no server, analytics, or network requests. Its only permission is `storage`, and it runs only on `https://www.linkedin.com/*`. To apply three filters, it compares a small amount of text already on the page, in memory only. [PRIVACY.md](PRIVACY.md) lists exactly what it reads and stores.
+The extension isn't in the Chrome Web Store, so you install it by hand. It takes about a minute and needs Chrome 111 or newer.
 
-## Known limitations
+1. Download `tweaks-for-linkedin-1.0.0.zip` from the [latest release](https://github.com/VatslauX/tweaks-for-linkedin/releases/latest).
+2. Unzip it into a folder you'll keep. Chrome loads the extension from there, so don't delete it.
+3. Open `chrome://extensions` and turn on **Developer mode** (top right).
+4. Click **Load unpacked** and choose the unzipped folder.
+5. Pin the extension from the puzzle-piece menu.
 
-- LinkedIn changes its pages often, so any tweak can stop working without notice.
-- Layouts were measured on real LinkedIn only at a window about 1018 px wide.
-- Only the English "Promoted" label was seen on real LinkedIn. The labels for other languages come from another project and are untested.
-- The connection filter recognizes English labels only, and its handling of reposts is unverified.
-- The company filter works only when a headline names the company, so some colleagues stay visible. Similar names can match, such as "Acme Partners" for "Acme". Past-job wording such as "ex-" and "former" is recognized in English only.
-- The company filter has not been checked against invitation cards. If they share the suggestion layout, an invitation from a colleague could be hidden.
-- With Block promoted on, a promoted post can show briefly until the saved setting loads.
-- Some promoted labels can have another meaning, such as Hungarian "Kiemelt" ("Featured"), so a normal post could be hidden.
-- Opening a chat from a profile while the floating Messaging bar is hidden was tested only on a mock page.
-- Promoted jobs, "For Business", "Advertise", and "Post a free job" are not hidden.
+**To update:** Chrome won't update it for you. Unzip the new version over the same folder, then click the reload icon on the extension's card in `chrome://extensions`. Your settings stay.
 
-## Development
+**To remove:** click **Remove** on the extension's card. LinkedIn goes back to normal, and your saved settings and company names are deleted.
 
-The extension is plain JavaScript and CSS, with no compile step or runtime dependencies. To run it from source, load the `extension` folder with **Load unpacked**.
+## Privacy & safety
 
-```sh
-npm ci
-npx playwright install chromium
-npm test
-npm run build   # creates the release ZIP in dist/
-```
+- Runs only on `https://www.linkedin.com/`. Its only permission is `storage`, for your settings.
+- Nothing is sent anywhere. There is no server, account, analytics, or remote code.
+- It never clicks, likes, follows, posts, or sends anything on LinkedIn, and it doesn't load extra profiles or data.
+- To apply the filters, it compares a few short pieces of text already on the page: the labels on feed posts and the headlines of suggested people. This happens in memory, and the text is never saved.
+- **LinkedIn can tell it's there.** The extension adds small markers to the page, and LinkedIn can also notice hidden blocks and changed widths. The extension doesn't try to hide itself.
 
-Tests run against synthetic mock pages. Never add real LinkedIn HTML or screenshots to this repository, because they contain personal data.
+See [PRIVACY.md](PRIVACY.md) for exactly what it reads and stores.
+
+## Notes & limitations
+
+- LinkedIn changes its pages often, so a tweak can stop working without notice.
+- The layout has been checked on real LinkedIn only in a window about 1018 px wide. Other sizes may look different.
+- The connection filter works with LinkedIn in English. How it treats reposts hasn't been confirmed.
+- Only the English "Promoted" label has been seen on real LinkedIn. Other languages are untested, and some labels have a second meaning (Hungarian "Kiemelt" also means "Featured"), so a normal post could be hidden.
+- With *Block promoted* on, a promoted post can flash briefly while the page loads.
+- The company filter only knows what a headline says. Colleagues who don't mention the company stay visible, and a similar name can match (`Acme` also matches `Acme Partners`).
+- Past-job wording such as "ex-" and "former" is recognized in English only.
+- The company filter hasn't been checked with invitation cards. If you're expecting an invitation from a colleague and don't see it, turn the filter off.
+- Opening a chat from a profile with the Messaging bar hidden has been tested only on a mock page.
+- Promoted jobs, *For Business*, *Advertise*, and *Post a free job* are not hidden.
+
+Found a problem or have an idea? Use **Feedback or report a problem** in the popup, or [open the form here](https://github.com/VatslauX/tweaks-for-linkedin/issues/new/choose). Issues are public, so please don't include LinkedIn HTML or screenshots of real people.
+
+See [CHANGELOG.md](CHANGELOG.md) for release notes.
 
 ## License
 
-[Apache License 2.0](LICENSE). See [NOTICE](NOTICE) for third-party credits.
+[Apache License 2.0](LICENSE). See also [NOTICE](NOTICE). LinkedIn is a trademark of LinkedIn Corporation, and this project is not affiliated with it.

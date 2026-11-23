@@ -16,6 +16,7 @@ Do not loosen these. `tests/unit/static.test.js` checks them.
 - Approved POC exception: `degree.js` may compare the first six paragraphs of a Home feed card, up to 12 characters after trimming, with the labels `1st`, `2nd`, and `3rd+`. The comparison stays in memory, and the only result is a marker attribute on the card. Do not widen it.
 - Approved POC exception: `company.js` may compare the headline of a suggestion card on the Network Grow page, meaning the last paragraph inside the card's profile link and at most 300 characters, with the company names the user typed in the popup. The comparison stays in memory, and the only result is a marker attribute on the card. The names stay in `chrome.storage.local` and are never written to the page. Do not widen it.
 - The popup may ask the active tab for the blocked count with `chrome.tabs.query` and `chrome.tabs.sendMessage`, which need no permission. The content script replies only to its own extension, and only with a number or `null`.
+- The popup may show one link to the project's GitHub feedback form, prefilled only with the extension version, Chrome major version, and browser language. Never add settings, company names, or LinkedIn data to it.
 - No `innerHTML`, `insertAdjacentHTML`, `setHTMLUnsafe`, or `document.write`.
 - The extension only changes how the page looks. It never clicks, submits, follows, likes, or posts anything on LinkedIn.
 - Source in `extension/` is English only, except the label list in `promoted.js`. Keep `minimum_chrome_version` at 111 or higher.

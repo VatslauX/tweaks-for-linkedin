@@ -116,3 +116,13 @@ textarea {
 }
 
 textarea:focus-visible { outline: 2px solid var(--on); outline-offset: 1px; }
+
+.feedback {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.feedback a { color: var(--on); }
+.feedback a:focus-visible { outline: 2px solid var(--on); outline-offset: 2px; }
